@@ -1,0 +1,28 @@
+package main
+
+import (
+	"log"
+	"net"
+
+	"github.com/mansikalra23/Microservices-with-Go/tree/gRPC/gRPC/chat"
+	"google.golang.org/grpc" // official grpc package31
+)
+
+// main function will listen on the port for incomming tcp connections
+func main() {
+	lis, err := net.Listen("tcp", ":9000")
+	if err != nil {
+		log.Fatalf("unable to listen: %v", err)
+	}
+
+	s := chat.Server{}
+
+	// registering the endpoints
+	grpcServer := grpc.NewServer()
+
+	chat.RegisterChatServiceServer(grpcServer, &s)
+
+	if err := grpcServer.Serve(lis); err != nil {
+		log.Fatalf("unable to serve: %s", err)
+	}
+}
