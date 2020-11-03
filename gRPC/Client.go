@@ -5,11 +5,13 @@ import (
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+
+	"github.com/mansikalra23/Microservices/gRPC/chat"
 )
 
 func main() {
-	var conn *grpc.Clientconn
-	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
+	var conn *grpc.ClientConn
+	conn, err := grpc.Dial(":8080", grpc.WithInsecure())
 
 	if err != nil {
 		log.Fatalf("Could not connect: %s", err)
@@ -28,5 +30,5 @@ func main() {
 		log.Fatalf("Error in SayHello, %s", err)
 	}
 
-	log.Printf("Respomse  : %s", response.Body)
+	log.Printf("Response  : %s", response.Body)
 }

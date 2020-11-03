@@ -1,16 +1,20 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 
-	"github.com/mansikalra23/Microservices-with-Go/tree/gRPC/gRPC/chat"
+	"github.com/mansikalra23/Microservices/gRPC/chat"
 	"google.golang.org/grpc" // official grpc package31
 )
 
 // main function will listen on the port for incomming tcp connections
 func main() {
-	lis, err := net.Listen("tcp", ":9000")
+
+	fmt.Println("gRPC Basic Program.")
+
+	lis, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatalf("unable to listen: %v", err)
 	}
