@@ -6,7 +6,7 @@ import (
 	"net"
 
 	"github.com/mansikalra23/Microservices/gRPC/chat"
-	"google.golang.org/grpc" // official grpc package
+	"google.golang.org/grpc" // official grpc package31
 )
 
 // main function will listen on the port for incomming tcp connections
